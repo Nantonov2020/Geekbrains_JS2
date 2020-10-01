@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div id="app">
+
+        <header class="header">
+            <a href="#">
+                <img src="img/logo.jpg" alt="" width="80" height="80" class="logo">
+            </a>
+            <nav class="header__menu-nav">
+                <ul class="header__menu">
+                    <li class="header__menu-item"> <a href="#" class="header__menu-link">Главная</a> </li>
+                    <li class="header__menu-item"> <a href="#" class="header__menu-link header__menu-link-active">Каталог</a> </li>
+                    <li class="header__menu-item"> <a href="#" class="header__menu-link">Контакты</a> </li>
+                </ul>
+            </nav>
+            <div>
+                <form action="#" class="search-form">
+                    <input type="text" class="search-field" v-model="searchWord">
+                    <button class="btn-search" type="submit" @click="search()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <button class="header__basket" type="button" @click="show=!show">
+                {{ textBasket }}
+            </button>
+        </header>
+        <main>
+            <div v-if="show" class="basket">
+                <div class="basket_up">
+                    <div class="basket_close" @click="show=!show"> X </div>
+                </div>
+                <div class="basket_down">
+
+                    <br><br>
+                    <table align="center" border="1">
+                        <tr>
+                            <th width="200">Наименование</th>
+                            <th width="100">Цена</th>
+                            <th width="100">Количество</th>
+                            <th width="100">Сумма</th>
+                        </tr>
+
+                        <tr v-for="product of basket" :key="product.id_product" align="center">
+                            <td>{{product.product_name}}</td>
+                            <td>{{product.price}}</td>
+                            <td><button @click="delProduct(product)">-</button>&nbsp;{{product.quantity}}&nbsp;<button @click="addProduct(product)">+</button></td>
+                            <td>{{product.quantity*product.price}}</td>
+                        </tr>
+
+                        <tr align="center">
+                            <td colspan="2"><b>ИТОГО:</b> </td>
+                            <td><b>{{ countBasket }}</b></td>
+                            <td><b>{{ summBasket }}</b></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div v-else="show">
+
+            </div>
+
+            <section class="catalog">
+                <div class="products">
+                    <div class="product-item" v-for="product of products" :key="product.id_product">
+                        <img :src="imgCatalog" alt="Some img" width="250">
+                        <div class="desc">
+                            <h3>{{product.product_name}}</h3>
+                            <p>{{product.price}} $</p>
+                            <button class="buy-btn" @click="addProduct(product)">Купить</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p>Copyright &copy; 2020</p>
+        </footer>
+        </div>
+        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+        <script src="js/vue.js"></script>
+        <script src="js/main.js"></script>
+
+    </div>
+</body>
+</html>

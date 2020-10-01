@@ -1,0 +1,42 @@
+[
+  {
+    "id_product": 1001,
+    "product_name": "Клавиатура",
+    "price": 1600
+  },
+  {
+    "id_product": 1002,
+    "product_name": "Винчестер",
+    "price": 3000
+  },
+  {
+    "id_product": 1003,
+    "product_name": "Магнитофон",
+    "price": 255
+  },
+  {
+    "id_product": 1004,
+    "product_name": "Наушники",
+    "price": 17
+  },
+  {
+    "id_product": 1005,
+    "product_name": "Колонки",
+    "price": 288
+  },
+  {
+    "id_product": 1006,
+    "product_name": "Изолента",
+    "price": 5
+  },
+  {
+    "id_product": 1007,
+    "product_name": "Видеокарта",
+    "price": 1000
+  },
+  {
+    "id_product": 1008,
+    "product_name": "Монитор",
+    "price": 589
+  }
+]
