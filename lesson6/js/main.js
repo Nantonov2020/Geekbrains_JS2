@@ -1,4 +1,3 @@
-'use strict';
 
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
@@ -26,13 +25,11 @@ const app = new Vue({
         },
 
         closeBasket(){
-            alert(111);
             this.showBasket = false;
         },
 
 
         addProduct(product){
-            console.dir(this.basket);
 
             let flag = 0;
             for (let el of this.basket){
@@ -42,8 +39,9 @@ const app = new Vue({
                 }
             }
             if (flag == 0){
-                product.quantity = 1;
-                this.basket.push(product);
+
+                const prod = Object.assign({quantity: 1}, product);
+                this.basket.push(prod);
             }
             this.countBasket = this.countProductsInBasket();
             this.textBasket = 'Корзина(' + this.countBasket + ')';
@@ -65,17 +63,14 @@ const app = new Vue({
             this.clearBasket();
         },
         
-        search(){
+        search(mess){
+            this.products = [...this.productFix];
           let arr = [];
-
-          if (this.searchWord == '') {
-              this.products = [...this.productFix];
-          }
 
             for (let el of this.products){
                 let product_name = el.product_name.toUpperCase();
-                let searchWord = this.searchWord.toUpperCase();
-                if (product_name.indexOf(searchWord) > -1){
+                mess = mess.toUpperCase();
+                if (product_name.indexOf(mess) > -1){
                     arr.push(el);
                 }
             }
@@ -110,6 +105,7 @@ const app = new Vue({
 
     },
     mounted(){
+
         this.getJson(`${API + this.catalogUrl}`)
             .then(data => {
                 for(let el of data){

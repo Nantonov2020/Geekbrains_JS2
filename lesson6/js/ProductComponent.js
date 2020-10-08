@@ -1,4 +1,3 @@
-'use strict';
 
 Vue.component('products', {
     props: ['products', 'img'],

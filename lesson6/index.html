@@ -22,14 +22,8 @@
                     <li class="header__menu-item"> <a href="#" class="header__menu-link">Контакты</a> </li>
                 </ul>
             </nav>
-            <div>
-                <form action="#" class="search-form">
-                    <input type="text" class="search-field" v-model="searchWord">
-                    <button class="btn-search" type="submit" @click="search()">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
+
+            <search @searh="search"></search>
 
             <button class="header__basket" type="button" @click="showBasket = !showBasket">
                 {{ textBasket }}
@@ -39,7 +33,7 @@
 
             <basket :basket="basket"
                     :visibility="showBasket"
-                    @closebasket="closeBasket"
+                    :summbasket="summBasket"
                     @remove="delProduct"
                     @add="addProduct">
 
@@ -56,6 +50,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
         <script src="js/vue.js"></script>
         <script src="js/ProductComponent.js"></script>
+        <script src="js/SearchComponent.js"></script>
         <script src="js/BasketComponent.js"></script>
         <script src="js/main.js"></script>
 
