@@ -1,10 +1,9 @@
-'use strict';
 
 Vue.component('basket', {
-    props:['basket', 'visibility'],
+    props:['basket', 'visibility','summbasket'],
     template:`<div class="basket" v-show="visibility">
                 <div class="basket_up">
-                    <div class="basket_close" @click="$parent.$emit('closebasket')"> X </div>
+                    <div class="basket_close" @click="this.$parent.closeBasket"> X </div>
                 </div>
                    <div class="basket_down">
                     <br><br>
@@ -16,6 +15,7 @@ Vue.component('basket', {
                             <th width="100">Сумма</th>
                         </tr>
                         <basket-item v-for="item of basket" :key="item.id_product" :basket-item="item"></basket-item>
+                        <tr><td colspan="3"><b>ИТОГО:</b></td><td align="center"><b>{{ summbasket }}</b></td></tr>
                     </table>
                 </div>
 </div>
